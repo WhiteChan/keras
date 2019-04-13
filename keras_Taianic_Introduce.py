@@ -80,3 +80,19 @@ train_history = model.fit(x=train_Features, y=train_Label, validation_split=0.1,
 
 scores = model.evaluate(x=test_Features, y=test_Label)
 print('acc = ', scores[1])
+
+# 加入Jack和Rose的数据
+Jack = pd.Series([0, 'Jack', 3, 'male', 23, 1, 0, 5.0000, 'S'])
+Rose = pd.Series([1, 'Rose', 1, 'female', 20, 1, 0, 100.0000, 'S'])
+
+JR_df = pd.DataFrame([list(Jack), list(Rose)], columns=['survived', 'name', 'pclass', 'sex', 'age', 'sibsp', 'parch', 'fare', 'embarked'])
+
+all_df = pd.concat([all_df, JR_df])
+
+all_Features, Label = PreprocessData(all_df)
+all_probability = model.predict(all_Features)
+
+all_df_probability = all_df
+all_df_probability.insert(len(all_df.columns), 'probability', all_probability)
+
+print(all_df_probability[-2:])
