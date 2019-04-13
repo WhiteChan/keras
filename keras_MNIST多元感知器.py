@@ -81,7 +81,7 @@ scores = model.evaluate(x_Test_normalize, y_Test_One_Hot)
 print()
 print('accuracy = ', scores[1])
 
-# # 进行预测
+# 进行预测
 # prediction = model.predict_classes(x_Test)
 # print(prediction)
 
