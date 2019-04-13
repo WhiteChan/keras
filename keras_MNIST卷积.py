@@ -33,8 +33,6 @@ model.add(Dropout(0.5))
 
 model.add(Dense(10, activation='softmax'))
 
-print(model.summary())
-
-model.compile(loss='categorical_corssentropy', optimizer='adam', metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 train_history = model.fit(x=x_Train4D_normalize, y=y_TrainOneHot, validation_split=0.2, epochs=10, batch_size=300, verbose=2)
