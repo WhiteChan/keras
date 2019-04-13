@@ -36,3 +36,20 @@ model.add(Dense(10, activation='softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 train_history = model.fit(x=x_Train4D_normalize, y=y_TrainOneHot, validation_split=0.2, epochs=10, batch_size=300, verbose=2)
+
+# 绘制准确率结果
+import matplotlib.pyplot as plt 
+def show_train_history(train_history, train, validation):
+    '''
+    输入参数：之前训练过程所产生的train_history；训练数据的执行结果；验证数据的执行结果
+    '''
+    plt.plot(train_history.history[train])
+    plt.plot(train_history.history[validation])
+    plt.title('Train History')
+    plt.ylabel(train)
+    plt.xlabel('Epoch')
+    plt.legend(['train', 'validation'], loc='upper left')
+    plt.show()
+
+show_train_history(train_history, 'acc', 'val_acc')
+show_train_history(train_history, 'loss', 'val_loss')
