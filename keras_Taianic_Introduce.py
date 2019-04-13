@@ -19,7 +19,7 @@ cols = ['survived', 'name', 'pclass', 'sex', 'age', 'sibsp', 'parch', 'fare', 'e
 all_df = all_df[cols]
 # print(all_df[:2])
 
-def PreprocessData(all_def):
+def PreprocessData(all_df):
     # 删除name字段
     df = all_df.drop(['name'], axis=1)
 
