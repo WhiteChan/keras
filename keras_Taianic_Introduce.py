@@ -96,3 +96,6 @@ all_df_probability = all_df
 all_df_probability.insert(len(all_df.columns), 'probability', all_probability)
 
 print(all_df_probability[-2:])
+
+# 查看存活概率高却没有存活的人
+print(all_df_probability[(all_df_probability['probability'] > 0.9) & (all_df_probability['survived'] == 0)])
