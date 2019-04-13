@@ -51,5 +51,10 @@ def show_train_history(train_history, train, validation):
     plt.legend(['train', 'validation'], loc='upper left')
     plt.show()
 
-show_train_history(train_history, 'acc', 'val_acc')
-show_train_history(train_history, 'loss', 'val_loss')
+# show_train_history(train_history, 'acc', 'val_acc')
+# show_train_history(train_history, 'loss', 'val_loss')
+
+# 评估模型准确率
+scores = model.evaluate(x_Test4D_normalize, y_TestOneHot)
+print()
+print('acc = ', scores[1])
