@@ -46,7 +46,7 @@ model.add(Dense(10, activation='softmax'))
 # 训练
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-train_history = model.fit(x_img_train_normalize, y_label_train_OneHot, validation_split=0.2, epochs=20, batch_size=128, verbose=2)
+train_history = model.fit(x_img_train_normalize, y_label_train_OneHot, validation_split=0.2, epochs=50, batch_size=128, verbose=2)
 
 scores = model.evaluate(x=x_img_test_normalize, y=y_label_test_OneHot)
 print()
