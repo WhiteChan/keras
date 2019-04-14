@@ -58,9 +58,9 @@ print(y_train[12501])
 
 # 建立token
 token = Tokenizer(num_words=2000)
-token.fit_on_sequences(train_text)
+token.fit_on_texts(train_text)
 
 print(token.document_count)
-print(token.word_index)
+print(token.index_word)
 
 # 使用token将文字转换成数字列表
