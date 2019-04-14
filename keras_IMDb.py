@@ -8,7 +8,7 @@ from keras.preprocessing.text import Tokenizer
 from keras.models import Sequential
 from keras.layers.core import Dense, Dropout, Activation 
 from keras.layers.embeddings import Embedding
-from keras.layers.recurrent import SimpleRNN
+from keras.layers.recurrent import LSTM
 
 # 下载IMDb数据
 url = "http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz"
@@ -84,7 +84,7 @@ model = Sequential()
 model.add(Embedding(output_dim=32, input_dim=2000, input_length=100))
 model.add(Dropout(0.2))
 
-model.add(SimpleRNN(units=16))
+model.add(LSTM(units=32))
 
 model.add(Dense(units=256, activation='relu'))
 model.add(Dropout(0.35))
