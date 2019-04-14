@@ -5,6 +5,10 @@ import tarfile
 from keras.preprocessing import sequence
 from keras.preprocessing.text import Tokenizer
 
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, Activation, Flatten 
+from keras.layers.embeddings import Embedding
+
 # 下载IMDb数据
 url = "http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz"
 filepath = "data/aclImdb_v1.tar.gz"
@@ -50,22 +54,39 @@ def read_files(filetype):
 y_train, train_text = read_files("train")
 y_test, test_text = read_files("test")
 
-print(train_text[0])
-print(y_train[0])
+# print(train_text[0])
+# print(y_train[0])
 
-print(train_text[12501])
-print(y_train[12501])
+# print(train_text[12501])
+# print(y_train[12501])
 
 # 建立token
 token = Tokenizer(num_words=2000)
 token.fit_on_texts(train_text)
 
-print(token.document_count)
-print(token.index_word)
+# print(token.document_count)
+# print(token.index_word)
 
 # 使用token将文字转换成数字列表
 x_train_seq = token.texts_to_sequences(train_text)
 x_test_seq = token.texts_to_sequences(test_text)
 
-print(train_text[0])
-print(x_train_seq[0])
+# print(train_text[0])
+# print(x_train_seq[0])
+
+# 让转换后的数字长度相同
+x_train = sequence.pad_sequences(x_train_seq, maxlen=100)
+x_test = sequence.pad_sequences(x_test_seq, maxlen=100)
+
+# 多层感知器模型
+model = Sequential()
+model.add(Embedding(output_dim=32, input_dim=2000, input_length=100))
+model.add(Dropout(0.2))
+
+model.add(Flatten())
+
+model.add(Dense(units=256, activation='relu'))
+model.add(Dropout(0.35))
+
+model.add(Dense(units=1, activation='sigmoid'))
+print(model.summary())
