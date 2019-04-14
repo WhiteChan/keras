@@ -81,7 +81,7 @@ x_test = sequence.pad_sequences(x_test_seq, maxlen=100)
 
 # 多层感知器模型
 model = Sequential()
-model.add(Embedding(output_dim=32, input_dim=3800, input_length=380))
+model.add(Embedding(output_dim=32, input_dim=2000, input_length=100))
 model.add(Dropout(0.2))
 
 model.add(SimpleRNN(units=16))
