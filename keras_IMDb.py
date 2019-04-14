@@ -89,4 +89,11 @@ model.add(Dense(units=256, activation='relu'))
 model.add(Dropout(0.35))
 
 model.add(Dense(units=1, activation='sigmoid'))
-print(model.summary())
+# print(model.summary())
+# 训练模型
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+train_history = model.fit(x_train, y_train, batch_size=100, epochs=10, verbose=2, validation_split=0.2)
+
+scores = model.evaluate(x_test, y_test)
+print('acc = ', scores[1])
