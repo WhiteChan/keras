@@ -64,3 +64,8 @@ print(token.document_count)
 print(token.index_word)
 
 # 使用token将文字转换成数字列表
+x_train_seq = token.texts_to_sequences(train_text)
+x_test_seq = token.texts_to_sequences(test_text)
+
+print(train_text[0])
+print(x_train_seq[0])
