@@ -75,7 +75,7 @@ for epoch in range(trainEpochs):
     for i in range(totalBatchs):
         batch_x, batch_y = mnist.train.next_batch(batchSize)
         sess.run(optimizer, feed_dict={x: batch_x, y_label: batch_y})
-    loss, acc = sess.run([loss_function, accuracy], feed_dict={x: mnist.train.images, y_label: mnist.train.labels})
+    loss, acc = sess.run([loss_function, accuracy], feed_dict={x: mnist.train.images[:10000], y_label: mnist.train.labels[:10000]})
     epoch_list.append(epoch)
     loss_list.append(loss)
     accuracy_list.append(acc)
