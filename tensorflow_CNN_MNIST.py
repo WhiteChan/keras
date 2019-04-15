@@ -60,7 +60,7 @@ with tf.name_scope('evaluate_model'):
     correct_prediction = tf.equal(tf.argmax(y_predict, 1), tf.argmax(y_label, 1))
     accuracy = tf.reduce_mean(tf.cast(correct_prediction, 'float'))
 
-trainEpochs = 15
+trainEpochs = 30
 batchSize = 100
 totalBatchs = int(mnist.train.num_examples / batchSize)
 epoch_list = []
